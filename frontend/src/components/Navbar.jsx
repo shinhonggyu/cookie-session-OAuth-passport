@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Navbar = ({ user }) => {
+  const logout = () => {
+    window.open("http://localhost:5000/auth/logout", "_self");
+  };
+
   return (
     <div className="Navbar">
       <span className="logo">
@@ -11,14 +15,12 @@ const Navbar = ({ user }) => {
       {user ? (
         <ul className="list">
           <li className="listItem">
-            <img
-              src="https://cdn.pixabay.com/photo/2021/08/31/11/59/androgynous-6588615_960_720.jpg"
-              alt="img"
-              className="avatar"
-            />
+            <img src={user.photos[0].value} alt="img" className="avatar" />
           </li>
-          <li className="listItem">John Doe</li>
-          <li className="listItem">Logout</li>
+          <li className="listItem">{user.displayName || user.username}</li>
+          <li className="listItem" onClick={logout}>
+            Logout
+          </li>
         </ul>
       ) : (
         <Link className="link" to="/login">
