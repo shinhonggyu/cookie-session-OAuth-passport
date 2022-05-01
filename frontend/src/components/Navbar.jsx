@@ -9,7 +9,7 @@ const Navbar = ({ user }) => {
     <div className="Navbar">
       <span className="logo">
         <Link className="link" to="/">
-          OAuth App
+          OAuth Login
         </Link>
       </span>
       {user ? (
